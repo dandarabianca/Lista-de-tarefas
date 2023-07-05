@@ -1,65 +1,64 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import './App.css';
 
-function App(){
-   const [nome, setNome] = useState('');
-   const [email, setEmail] = useState('');
-   const [idade, setIdade] =useState('');
+function App() {
+  const [input, setInput] = useState('');
+  const [tarefas, setTarefas] = useState([
+   /* 'Pagar conta de luz',
+    'Estudar React Js',*/
+  ]);
 
-   const [user, setUser] = useState({
-    nome: '',
-    idade: '',
-    email: '',
-   });
+  useEffect(() => {
+    const tarefasStorage = localStorage.getItem('@tarefas');
 
+    if (tarefasStorage) {
+      setTarefas(JSON.parse(tarefasStorage))
+    }
 
-   function handleRegistrar(e){
-    e.preventDefault();
+  }, []);
 
-    alert ('Usuario registrado com sucesso!')
-    setUser({
-      nome: nome,
-      idade: idade,
-      email: email,
-    })
-   }
+  useEffect(() => {
+    localStorage.setItem('@tarefa', JSON.stringify('tarefas'))
+  }, [tarefas]);
 
-  return(
-   <div>
-    <h1>Cadastrando usuario</h1>
+  function handleRegistrar(event) {
+    event.preventDefault();
 
-    <form onSubmit={handleRegistrar}>
-      <label>Nome:</label><br/>
-      <input 
-      placeholder='Digite seu nome' 
-      value={nome}
-      onChange={ (e) => setNome(e.target.value) }
-      /><br/>
+    setTarefas([...tarefas, input]);
+    setInput('');
+  }
 
-      <label>Email:</label><br/>
-      <input 
-      placeholder='Digite seu email' 
-      value={email}
-      onChange={ (e) => setEmail(e.target.value) }
-      /><br/>
-
-      <label>Idade:</label><br/>
-      <input 
-      placeholder='Digite sua idade' 
-      value={idade}
-      onChange={ (e) => setIdade(e.target.value) }
-      /><br/>
-
-      <button type='submit'>Registrar</button>
-    </form>
-
-    <br/><br/>
-
+  return (
     <div>
-      <span>Bem vinda: {user.nome}</span><br/>
-      <span>Idade: {user.idade}</span><br/>
-      <span>Email: {user.email}</span><br/>
+      <h1>Lista de tarefas!</h1>
+
+      <form onSubmit={handleRegistrar}>
+        <label>Tarefas:</label><br />
+        <input
+          placeholder='Digite uma tarefa'
+
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+        /><br />
+         <input
+         placeholder='Digite a hora da tarefa'
+         /><br/>
+
+        <input
+         placeholder='Digite a data da tarefa'
+         /><br/>
+        <button type='submit'>Registrar</button>
+      </form>
+
+
+        
+      <ul>
+      {tarefas.map((tarefa, index) => (
+        <li key={index}>{tarefa}</li>
+        ))}
+      </ul>
+
     </div>
-   </div>
   );
 }
 
