@@ -4,8 +4,6 @@ import './App.css';
 function App() {
   const [input, setInput] = useState('');
   const [tarefas, setTarefas] = useState([
-   /* 'Pagar conta de luz',
-    'Estudar React Js',*/
   ]);
 
   useEffect(() => {
@@ -24,8 +22,29 @@ function App() {
   function handleRegistrar(event) {
     event.preventDefault();
 
+    const novaTarefa = {
+      palavra: input,
+      data: getCurrentDate(),
+      hora: getCurrentTime()
+    };
+
     setTarefas([...tarefas, input]);
     setInput('');
+  }
+
+  function getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  function getCurrentTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    return `${hours}:${minutes}`;
   }
 
   return (
@@ -59,7 +78,11 @@ function App() {
       </div>
       <ul>
       {tarefas.map((tarefa, index) => (
-        <li key={index}>{tarefa}</li>
+        <li key={index}>
+          <p>Tarefa: {tarefa.palavra}</p>
+          <p>Data: {tarefa.data}</p>
+          <p>Hora: {tarefa.hora}</p>
+        </li>
         ))}
       </ul>
 
