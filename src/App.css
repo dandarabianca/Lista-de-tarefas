@@ -12,9 +12,33 @@ body {
 h1 {
     color: black;
     text-align: center;
+
 }
 
 label {
     color: black;
     font-family: Verdana;
+}
+.containerCenter{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.items{
+    display: flex;
+    flex-direction: row;
+}
+.inputs{
+    display: flex;
+}
+ 
+form{
+    display: flex;
+    flex-direction: column;
+}
+ul{
+    width: 100%
+}
+li{
+    flex-direction: row;
 }

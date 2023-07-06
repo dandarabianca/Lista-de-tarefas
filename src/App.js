@@ -29,35 +29,41 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='containerCenter'>
       <h1>Lista de tarefas!</h1>
-
+      <div className='items'>
+        <div className='inputs'>
       <form onSubmit={handleRegistrar}>
-        <label>Tarefas:</label><br />
+        <label>Tarefas:</label>
         <input
           placeholder='Digite uma tarefa'
 
           value={input}
           onChange={(event) => setInput(event.target.value)}
-        /><br />
-         <input
-         placeholder='Digite a hora da tarefa'
-         /><br/>
+        />
 
+        <label for="hour">Hora:</label>
+         <input
+         id="hour"
+         type='time'
+         placeholder='Digite a hora da tarefa'
+         />
+        <label for="date">Date:</label>
         <input
+        id="date"
+        type="date"
          placeholder='Digite a data da tarefa'
-         /><br/>
+         />
         <button type='submit'>Registrar</button>
       </form>
-
-
-        
+      </div>
       <ul>
       {tarefas.map((tarefa, index) => (
         <li key={index}>{tarefa}</li>
         ))}
       </ul>
 
+    </div>
     </div>
   );
 }
