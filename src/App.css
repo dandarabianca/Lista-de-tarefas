@@ -18,7 +18,7 @@ h1 {
 label {
     color: white;
     font-family: Verdana;
-    hover-flow: red;
+    
 }
 .containerCenter{
     display: flex;
@@ -44,4 +44,10 @@ ul{
 li{
     flex-direction: row;
     justify-content: center;
+    list-style: none;
+        
+}
+span{
+   font-family: sans-serif;
+
 }
