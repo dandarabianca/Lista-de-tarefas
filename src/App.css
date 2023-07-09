@@ -1,6 +1,6 @@
 * {
-    margin: 9px;
-    padding: 7px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -12,13 +12,12 @@ body {
 h1 {
     color: white;
     text-align: center;
-
+    margin: .9em;
 }
 
 label {
     color: white;
-    font-family: Verdana;
-    
+    font-weight: bold;
 }
 .containerCenter{
     display: flex;
@@ -28,26 +27,110 @@ label {
 .items{
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 .inputs{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    font-size: 1.5em;
 }
  
 form{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 ul{
-    background-color: white;
+    background-color: black;
     width: 100%
 }
 li{
     flex-direction: row;
     justify-content: center;
-    list-style: none;
-        
+    list-style: none;    
+    background: black;
+    color: white;
+    border-radius: .3em;
+    font-weight: bold;
+    border: solid 1px white;
+    width: 90%;
+    margin: .3em 0;
+    padding: .3em 1em;
+    position: relative;
+}
+button{
+    background: black;
+    color: red;
+    border: none;
+    font-size: 1.5em;
+}
+.buttonStyle{
+    background: white;
+    color: red;
+    position: absolute;
+    right: 2%;
+    top: 30%;
+}
+.buttonAdd{
+    background-color: #62a4ab;
+    color: white;
+    border: none;
+    border-radius: .6em;
+    padding: .3em;
 }
 span{
    font-family: sans-serif;
+   margin: 0 1em;
+}
+.tarefasProntas{
+    justify-content: center;
+    border-radius: .6em;
+    background: black;
+    color: white;
+    display: flex;
 
+    flex-direction: column;
+    text-align: center;
+}
+.styleTarefa{
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;    
+    background: black;
+    color: white;
+    border-radius: .3em;
+    font-weight: bold;
+    border: solid 1px white;
+    width: 100%;
+    margin: .4em 1em;
+    padding: .5em 2em;
+}
+.inputsItems{
+    width: 70%;
+    height: 2em;
+    font-size: .8em;
+    padding: .3em;
+    margin: 0 0 1em 0;
+    border-radius: .3em;
+    border: none;
+}
+.tarefasMap{
+    width: 100%;
+    height: 30vh;
+    overflow-y: auto;
+}
+.tarefasConteiner{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    width: 100%;
+}
+.tarefasMap{
+    margin-top: 3%;
+}
+h2{
+    color: white;
 }
